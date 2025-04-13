@@ -1,6 +1,6 @@
 
 import React from "react";
-import { Link, useLocation } from "react-router-dom";
+import { Link } from "react-router-dom";
 import { cn } from "@/lib/utils";
 import {
   Archive,
@@ -21,21 +21,19 @@ interface SidebarProps {
 }
 
 interface SidebarLinkProps {
-  to: string;
+  href: string;
   icon: React.ReactNode;
   label: string;
+  active?: boolean;
 }
 
-function SidebarLink({ to, icon, label }: SidebarLinkProps) {
-  const location = useLocation();
-  const isActive = location.pathname === to;
-  
+function SidebarLink({ href, icon, label, active }: SidebarLinkProps) {
   return (
     <Link
-      to={to}
+      to={href}
       className={cn(
         "flex items-center gap-3 rounded-md px-3 py-2 text-sm transition-colors",
-        isActive
+        active
           ? "bg-accent text-accent-foreground"
           : "text-muted-foreground hover:bg-secondary hover:text-foreground"
       )}
@@ -64,22 +62,23 @@ export default function Sidebar({ isOpen, className }: SidebarProps) {
           
           <div className="mt-8 space-y-1">
             <SidebarLink
-              to="/dashboard"
+              href="/"
               icon={<Home className="h-4 w-4" />}
               label="Dashboard"
+              active
             />
             <SidebarLink
-              to="/projects"
+              href="/projects"
               icon={<FileCode className="h-4 w-4" />}
               label="My Projects"
             />
             <SidebarLink
-              to="/templates"
+              href="/templates"
               icon={<Grid className="h-4 w-4" />}
               label="Templates"
             />
             <SidebarLink
-              to="/archive"
+              href="/archive"
               icon={<Archive className="h-4 w-4" />}
               label="Archive"
             />
@@ -90,12 +89,12 @@ export default function Sidebar({ isOpen, className }: SidebarProps) {
               Analytics
             </div>
             <SidebarLink
-              to="/analytics"
+              href="/analytics"
               icon={<BarChart2 className="h-4 w-4" />}
               label="Statistics"
             />
             <SidebarLink
-              to="/tags"
+              href="/tags"
               icon={<Tag className="h-4 w-4" />}
               label="Tags"
             />
@@ -106,12 +105,12 @@ export default function Sidebar({ isOpen, className }: SidebarProps) {
               Account
             </div>
             <SidebarLink
-              to="/profile"
+              href="/profile"
               icon={<User className="h-4 w-4" />}
               label="Profile"
             />
             <SidebarLink
-              to="/settings"
+              href="/settings"
               icon={<Settings className="h-4 w-4" />}
               label="Settings"
             />
