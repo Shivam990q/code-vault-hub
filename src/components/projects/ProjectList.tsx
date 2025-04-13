@@ -1,4 +1,3 @@
-
 import { useState } from "react";
 import { 
   Filter, 
@@ -8,7 +7,7 @@ import {
   Search, 
   SlidersHorizontal 
 } from "lucide-react";
-import ProjectCard, { Project } from "./ProjectCard";
+import ProjectCard from "./ProjectCard";
 import { Button } from "@/components/ui/button";
 import { Input } from "@/components/ui/input";
 import {
@@ -23,6 +22,17 @@ import {
   CollapsibleContent,
   CollapsibleTrigger,
 } from "@/components/ui/collapsible";
+
+export interface Project {
+  id: string;
+  title: string;
+  description: string;
+  language: string;
+  techStack: string[];
+  tags: string[];
+  date: Date;
+  fileName: string;
+}
 
 interface ProjectListProps {
   projects: Project[];

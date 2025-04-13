@@ -1,10 +1,9 @@
-
 import { useState, useRef, DragEvent } from "react";
 import { Upload, File, FilePlus2, X, CheckCircle2, AlertCircle } from "lucide-react";
 import { Button } from "@/components/ui/button";
 import { Progress } from "@/components/ui/progress";
 import { cn } from "@/lib/utils";
-import { toast } from "@/components/ui/toast";
+import { toast } from "@/hooks/use-toast";
 
 interface UploadAreaProps {
   onUploadComplete: (fileName: string) => void;
@@ -30,13 +29,11 @@ export default function UploadArea({ onUploadComplete }: UploadAreaProps) {
   };
 
   const validateFile = (file: File): boolean => {
-    // Check if the file is a ZIP archive
     if (!file.name.toLowerCase().endsWith('.zip')) {
       setError('Only ZIP files are allowed');
       return false;
     }
 
-    // Check file size (max 50MB)
     if (file.size > 50 * 1024 * 1024) {
       setError('File size exceeds the 50MB limit');
       return false;

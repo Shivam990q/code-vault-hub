@@ -1,6 +1,6 @@
 
 import { useState } from "react";
-import { useToast } from "@/components/ui/use-toast";
+import { useToast } from "@/hooks/use-toast";
 import UploadArea from "@/components/projects/UploadArea";
 import ProjectForm from "@/components/projects/ProjectForm";
 import ProjectList, { Project } from "@/components/projects/ProjectList";
